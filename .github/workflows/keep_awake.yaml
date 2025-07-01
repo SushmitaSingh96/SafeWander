@@ -1,0 +1,16 @@
+name: Keep Awake Pinger
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # every 15 minutes (UTC)
+  workflow_dispatch:        # allow manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run keep_awake.sh
+        run: bash ./keep_awake.sh
